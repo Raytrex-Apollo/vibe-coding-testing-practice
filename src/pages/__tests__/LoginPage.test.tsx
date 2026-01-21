@@ -46,7 +46,7 @@ describe('LoginPage', () => {
     describe('【前端元素】', () => {
         it('渲染基本登入表單', () => {
             renderLoginPage();
-            
+
             expect(screen.getByText('歡迎回來')).toBeInTheDocument();
             expect(screen.getByLabelText('電子郵件')).toBeInTheDocument();
             expect(screen.getByLabelText('密碼')).toBeInTheDocument();
@@ -57,7 +57,7 @@ describe('LoginPage', () => {
     describe('【function 邏輯】', () => {
         it('Email 格式校驗', async () => {
             renderLoginPage();
-            
+
             const emailInput = screen.getByLabelText('電子郵件');
             const submitButton = screen.getByRole('button', { name: '登入' });
 
@@ -69,7 +69,7 @@ describe('LoginPage', () => {
 
         it('密碼長度校驗', async () => {
             renderLoginPage();
-            
+
             const emailInput = screen.getByLabelText('電子郵件');
             const passwordInput = screen.getByLabelText('密碼');
             const submitButton = screen.getByRole('button', { name: '登入' });
@@ -83,7 +83,7 @@ describe('LoginPage', () => {
 
         it('密碼組成校驗', async () => {
             renderLoginPage();
-            
+
             const emailInput = screen.getByLabelText('電子郵件');
             const passwordInput = screen.getByLabelText('密碼');
             const submitButton = screen.getByRole('button', { name: '登入' });
@@ -97,7 +97,7 @@ describe('LoginPage', () => {
             // 只有字母
             fireEvent.change(passwordInput, { target: { value: 'abcdefgh' } });
             fireEvent.click(submitButton);
-            expect(await screen.findByText('密碼必須包含英文字母和數字')).toBeInTheDocument();
+            expect(await screen.findByText('密碼必須包含英文字母和數字adsfasfd')).toBeInTheDocument();
         });
     });
 
@@ -121,7 +121,7 @@ describe('LoginPage', () => {
             mockLogin.mockRejectedValueOnce({
                 response: { data: { message: errorMessage } }
             });
-            
+
             renderLoginPage();
 
             fireEvent.change(screen.getByLabelText('電子郵件'), { target: { value: 'test@example.com' } });
