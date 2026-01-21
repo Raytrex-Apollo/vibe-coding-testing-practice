@@ -97,7 +97,7 @@ describe('LoginPage', () => {
             // 只有字母
             fireEvent.change(passwordInput, { target: { value: 'abcdefgh' } });
             fireEvent.click(submitButton);
-            expect(await screen.findByText('密碼必須包含英文字母和數字adsfasfd')).toBeInTheDocument();
+            expect(await screen.findByText('密碼必須包含英文字母和數字')).toBeInTheDocument();
         });
     });
 
